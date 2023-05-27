@@ -1,0 +1,21 @@
+body {
+    padding: 2.5rem;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+button {
+    cursor: pointer;
+}
