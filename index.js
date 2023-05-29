@@ -16,8 +16,8 @@ function computer() {
 }
 
 function play() {
-    if (yourPick === "Rock" && computerPick === "Rock") {
-        outcome = "It's a Tie";
+    if (yourPick === computerPick) {
+        outcome = "It's a Tie"
     } else if (yourPick === "Rock" && computerPick === "Paper") {
         outcome = "You Lose :(";
     } else if (yourPick === "Rock" && computerPick === "Scissors") {
@@ -30,10 +30,6 @@ function play() {
         outcome = "You Lose :(";
     } else if (yourPick === "Scissors" && computerPick === "Paper") {
         outcome = "You Win :)";
-    } else if (yourPick === "Paper" && computerPick === "Paper") {
-        outcome = "It's a Tie";
-    } else if (yourPick === "Scissors" && computerPick === "Scissors") {
-        outcome = "It's a Tie";
     }
 }
 
