@@ -5,14 +5,11 @@ let computerPick;
 let outcome;
 
 // Objects
-
-let scores = JSON.parse(localStorage.getItem("scores"));
-
-// {
-//     wins: 0,
-//     loses: 0,
-//     Ties: 0
-// }
+let scores = JSON.parse(localStorage.getItem("scores")) || {
+    wins : 0,
+    loses: 0,
+    Ties: 0
+};
 
 // Functions
 function computer() {
@@ -57,6 +54,7 @@ function scoreTracker() {
 }
 
 
+// Calling the Functions
 
 for (let i = 0; i < 3; i++) {
     options[i].addEventListener("click", function () {
@@ -68,9 +66,11 @@ for (let i = 0; i < 3; i++) {
     });
 }
 
+
 document.querySelector(".reset").addEventListener("click", function () {
     scores.Ties = 0;
     scores.loses = 0;
     scores.wins = 0;
+    localStorage.removeItem("scores")
     alert(`Scores have been reset! \nWins: ${scores.wins}, Losses:${scores.loses}, Ties:${scores.Ties}`)
 });
