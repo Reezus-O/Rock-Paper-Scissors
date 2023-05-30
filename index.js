@@ -1,8 +1,20 @@
+// Variables
 let options = document.querySelectorAll(".picks");
 let yourPick;
 let computerPick;
 let outcome;
 
+// Objects
+
+let scores = JSON.parse(localStorage.getItem("scores"));
+
+// {
+//     wins: 0,
+//     loses: 0,
+//     Ties: 0
+// }
+
+// Functions
 function computer() {
     let randomNumber = Math.ceil(Math.random() * 3);
 
@@ -33,11 +45,32 @@ function play() {
     }
 }
 
+function scoreTracker() {
+    if (outcome === "It's a Tie") {
+        scores.Ties++;
+    } else if (outcome === "You Lose :(") {
+        scores.loses++;
+    } else if (outcome === "You Win :)") {
+        scores.wins++;
+    }
+    localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+
+
 for (let i = 0; i < 3; i++) {
     options[i].addEventListener("click", function () {
         yourPick = options[i].innerHTML;
         computer();
         play();
-        alert(`You picked ${yourPick} and Computer picked ${computerPick}. ${outcome}`)
+        scoreTracker();
+        alert(`You picked ${yourPick} and Computer picked ${computerPick}. ${outcome} \nWins: ${scores.wins}, Losses:${scores.loses}, Ties:${scores.Ties}`)
     });
 }
+
+document.querySelector(".reset").addEventListener("click", function () {
+    scores.Ties = 0;
+    scores.loses = 0;
+    scores.wins = 0;
+    alert(`Scores have been reset! \nWins: ${scores.wins}, Losses:${scores.loses}, Ties:${scores.Ties}`)
+});
