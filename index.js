@@ -3,13 +3,19 @@ let options = document.querySelectorAll(".picks");
 let yourPick;
 let computerPick;
 let outcome;
+let outcomeElement = document.querySelector(".outcome")
+let movesElement = document.querySelector(".moves")
 
 // Objects
 let scores = JSON.parse(localStorage.getItem("scores")) || {
-    wins : 0,
-    loses: 0,
+    wins: 0,
+    losses: 0,
     Ties: 0
 };
+
+document.querySelector(".wins").innerText = (`${scores.wins}`)
+document.querySelector(".losses").innerText = (`${scores.losses}`)
+document.querySelector(".ties").innerText = (`${scores.Ties}`)
 
 // Functions
 function computer() {
@@ -46,31 +52,46 @@ function scoreTracker() {
     if (outcome === "It's a Tie") {
         scores.Ties++;
     } else if (outcome === "You Lose :(") {
-        scores.loses++;
+        scores.losses++;
     } else if (outcome === "You Win :)") {
         scores.wins++;
     }
     localStorage.setItem("scores", JSON.stringify(scores));
 }
 
+function showResult() {
+    outcomeElement.innerText = (`${outcome}`)
+    document.querySelector(".your-move").innerText = (`${yourPick}`)
+    document.querySelector(".computer-move").innerText = (`${computerPick}`)
+    outcomeElement.classList.add("result")
+    movesElement.classList.add("result")
+    document.querySelector(".wins").innerText = (`${scores.wins}`)
+    document.querySelector(".losses").innerText = (`${scores.losses}`)
+    document.querySelector(".ties").innerText = (`${scores.Ties}`)
+}
+
+function reset() {
+    document.querySelector(".wins").innerText = (`${scores.wins}`)
+    document.querySelector(".losses").innerText = (`${scores.losses}`)
+    document.querySelector(".ties").innerText = (`${scores.Ties}`)
+}
 
 // Calling the Functions
-
 for (let i = 0; i < 3; i++) {
     options[i].addEventListener("click", function () {
         yourPick = options[i].innerHTML;
         computer();
         play();
         scoreTracker();
-        alert(`You picked ${yourPick} and Computer picked ${computerPick}. ${outcome} \nWins: ${scores.wins}, Losses:${scores.loses}, Ties:${scores.Ties}`)
+        showResult();
     });
 }
 
 
 document.querySelector(".reset").addEventListener("click", function () {
     scores.Ties = 0;
-    scores.loses = 0;
+    scores.losses = 0;
     scores.wins = 0;
     localStorage.removeItem("scores")
-    alert(`Scores have been reset! \nWins: ${scores.wins}, Losses:${scores.loses}, Ties:${scores.Ties}`)
+    reset();
 });

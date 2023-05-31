@@ -1,21 +1,29 @@
 body {
-    padding: 2.5rem;
+  padding: 2.5rem;
 }
 
 h1 {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 li {
-    display: inline-block;
-    padding-right: 1rem;
+  display: inline-block;
+  padding-right: 1rem;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+p {
+  display: none;
+}
+
+.result {
+  display: block;
 }
