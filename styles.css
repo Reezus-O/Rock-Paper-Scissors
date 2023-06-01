@@ -1,5 +1,7 @@
 body {
   padding: 2.5rem;
+  background-color: black;
+  color: white;
 }
 
 h1 {
@@ -14,6 +16,12 @@ ul {
 li {
   display: inline-block;
   padding-right: 1rem;
+  background-color: black;
+}
+
+img {
+  height: 50px;
+  width: 50px;
 }
 
 button {
@@ -23,7 +31,40 @@ button {
 p {
   display: none;
 }
+.outcome {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.picks {
+  background-color: black;
+  border: white 3px solid;
+  padding: 2rem;
+  border-radius: 50%;
+}
+
+.reset {
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .result {
   display: block;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:focus {
+  color: rgba(255, 255, 255, 0.629);
+}
+
+.asc {
+  margin-top: 4rem;
 }

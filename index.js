@@ -1,10 +1,12 @@
 // Variables
-let options = document.querySelectorAll(".picks");
+let options = document.querySelectorAll("img");
 let yourPick;
 let computerPick;
 let outcome;
 let outcomeElement = document.querySelector(".outcome")
 let movesElement = document.querySelector(".moves")
+let yourMove = document.querySelector(".your-move")
+let computerMove = document.querySelector(".computer-move")
 
 // Objects
 let scores = JSON.parse(localStorage.getItem("scores")) || {
@@ -59,10 +61,29 @@ function scoreTracker() {
     localStorage.setItem("scores", JSON.stringify(scores));
 }
 
+function moves() {
+    if (yourPick === "Rock") {
+        yourMove.setAttribute("src", "./Images/Rock.png")
+    } else if (yourPick === "Paper") {
+        yourMove.setAttribute("src", "./Images/Paper.png")
+    } else if (yourPick === "Scissors") {
+        yourMove.setAttribute("src", "./Images/Scissors.png")
+    } else {}
+
+    if (computerPick === "Rock") {
+        computerMove.setAttribute("src", "./Images/Rock.png")
+    } else if (computerPick === "Paper") {
+        computerMove.setAttribute("src", "./Images/Paper.png")
+    } else if (computerPick === "Scissors") {
+        computerMove.setAttribute("src", "./Images/Scissors.png")
+    }else{}
+}
+
 function showResult() {
     outcomeElement.innerText = (`${outcome}`)
-    document.querySelector(".your-move").innerText = (`${yourPick}`)
-    document.querySelector(".computer-move").innerText = (`${computerPick}`)
+    // yourMove.innerText = (`${yourPick}`)
+    // computerMove.innerText = (`${computerPick}`)
+    moves();
     outcomeElement.classList.add("result")
     movesElement.classList.add("result")
     document.querySelector(".wins").innerText = (`${scores.wins}`)
@@ -79,7 +100,7 @@ function reset() {
 // Calling the Functions
 for (let i = 0; i < 3; i++) {
     options[i].addEventListener("click", function () {
-        yourPick = options[i].innerHTML;
+        yourPick = options[i].alt;
         computer();
         play();
         scoreTracker();
