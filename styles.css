@@ -31,6 +31,7 @@ button {
 p {
   display: none;
 }
+
 .outcome {
   font-size: 2rem;
   font-weight: bold;
@@ -43,15 +44,24 @@ p {
   border-radius: 50%;
 }
 
-.reset {
+.btn {
+  display: inline-block;
+  margin: 10px 5px;
+}
+
+.reset,
+.auto-play,
+.stop-play {
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1rem;
 }
 
 .result {
   display: block;
+  margin-top: 10px;
 }
 
 a,
